@@ -93,12 +93,21 @@ export default function Navbar() {
                   color="orange"
                 />
                 <MenuList padding={8} border="1px solid orange">
+                  <RouterLink to={'/orders'}>
                   <MenuItem bg={"orange"} m={2}>
                     My Orders
                   </MenuItem>
+                    </RouterLink>  
+                  <RouterLink to={'/login'}>
                   <MenuItem bg={"orange"} m={2}>
-                    LogIn
+                  LogIn
                   </MenuItem>
+                  </RouterLink>
+                  <RouterLink to={'/signup'}>
+                  <MenuItem bg={"orange"} m={2}>
+                     Register
+                  </MenuItem>
+                     </RouterLink>
                 </MenuList>
               </Menu>
             </Stack>
