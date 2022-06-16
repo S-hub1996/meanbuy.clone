@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# MeanBuyProject
+ This is My MeanBuy clone project
+https://anandrajsingh05.github.io/MeanBuyProject/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<h4>Stacks I used:- React,Redux,ChakraUI, Redux-Thunk, React-router-dom.</h4>
 
-### `npm start`
+<h3>Here are some snapshots of our website :)</h3>
+<a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*-lZ5bgaCTzlauG4k5DljBQ.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Landing Page</h5>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*mMUHQYsVkQ_APZhS6Fz1mA.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Scrolling Window</h5>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*jR0uAYk5HkxCReGTDLGh7g.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Footer section</h5>
 
-### `npm test`
+<a href="https://linkedin.com/in/anandrajsingh5" target="blank"><img align="center" src="https://miro.medium.com/max/700/1*5aFX_zog1xPtJ64leqiu1g.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Product page</h5>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a href="https://linkedin.com/in/anandrajsingh5" target="blank"><img align="center" src="https://miro.medium.com/max/700/1*VtB7biJ_Z5ocURftMB17UA.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Product Description page</h5>
 
-### `npm run build`
+<a href="https://linkedin.com/in/anandrajsingh5" target="blank"><img align="center" src="https://miro.medium.com/max/700/1*SWHoisljtRTlkCi122Xyyw.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Sign up/Login Page</h5>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<a href="https://linkedin.com/in/anandrajsingh5" target="blank"><img align="center" src="https://miro.medium.com/max/700/1*LDF54tnUGvr_LAbnuQttkQ.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Payment page</h5>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a href="https://linkedin.com/in/anandrajsingh5" target="blank"><img align="center" src="https://miro.medium.com/max/700/1*uBcZcvsTj2jKpRJSDRFhyw.jpeg" alt="website images" height="400" width="1200" /></a>
+<h5 align="center">Payment Options</h5>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
