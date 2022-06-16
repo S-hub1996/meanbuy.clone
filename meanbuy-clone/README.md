@@ -1,6 +1,6 @@
 # MeanBuyProject
  This is My MeanBuy clone project
-https://anandrajsingh05.github.io/MeanBuyProject/
+https://meanbuy-clone.vercel.app/
 
 
 
