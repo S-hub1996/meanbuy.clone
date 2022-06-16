@@ -6,7 +6,7 @@ https://anandrajsingh05.github.io/MeanBuyProject/
 
 <h4>Stacks I used:- React,Redux,ChakraUI, Redux-Thunk, React-router-dom.</h4>
 
-<h3>Here are some snapshots of our website :)</h3>
+<h3>Here are some snapshots of website :)</h3>
 <a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*-lZ5bgaCTzlauG4k5DljBQ.jpeg" alt="website images" height="400" width="1200" /></a>
 <h5 align="center">Landing Page</h5>
 
