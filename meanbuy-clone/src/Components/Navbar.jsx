@@ -89,10 +89,11 @@ export default function Navbar() {
               <Button onClick={toggleColorMode} bg="none">
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
-
+                  <RouterLink to={'/cart'}>
               <Button bg={"none"}>
                 <HiShoppingCart size={30} color="orange" />
               </Button>
+                  </RouterLink>
 
               <Menu>
                 <MenuButton
@@ -151,10 +152,15 @@ export default function Navbar() {
           <RouterLink to={"/products"}>
             <Link> Flash Sale</Link>
           </RouterLink>
+          <RouterLink to={"/products"}>
           <Link display={["none", "none", "block"]}> Best Deals</Link>
+          </RouterLink>
           <Link display={["none", "none", "block"]}> Shop by Brand</Link>
+         
           <Link display={["none", "none", "block"]}> Trending</Link>
+         <RouterLink to={'/products'}>
           <Link> New Arrivals</Link>
+         </RouterLink>
         </Flex>
       </Box>
     </>
@@ -170,9 +176,12 @@ const MENU_LIST = () => {
             <Heading as={"h4"} size={"sm"}>
               MEN
             </Heading>
+            <RouterLink to={'/watches'}>
             <MenuItem>Watches</MenuItem>
+            </RouterLink>
+            <RouterLink to={'/watches'}>
             <MenuItem>Men's Watches</MenuItem>
-
+            </RouterLink>
             <Heading as={"h4"} size={"sm"}>
               WOMEN
             </Heading>
@@ -238,7 +247,9 @@ const MENU_LIST = () => {
               MEANBUY DEALS
             </Heading>
             <MenuItem>Electronics</MenuItem>
+            <RouterLink to={'/watches'}>
             <MenuItem>Men's Watches</MenuItem>
+            </RouterLink>
             <MenuItem>Ramadan Gifts</MenuItem>
             <MenuItem>Smart Watches</MenuItem>
             <MenuItem>Top Selling Ear Buds</MenuItem>

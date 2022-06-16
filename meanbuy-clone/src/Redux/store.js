@@ -6,10 +6,11 @@ import {
   } from "redux";
   import thunk from "redux-thunk";
  import { authReducer } from "./Auth/Reducer";
+ import productReducer from "./Products/reducer"
   
   
   
-  const rootReducer = combineReducers({ authReducer });
+  const rootReducer = combineReducers({ productReducer,authReducer });
   
   
   export const store = createStore(

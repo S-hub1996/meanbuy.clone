@@ -6,7 +6,7 @@ const AuthWrapper = ({children}) => {
     const authStatus= useSelector(store=>store.authReducer.auth)
 
         if(authStatus){
-          return  <Navigate to='/login' state='/' replace={true} />
+          return  <Navigate to='/login' state='/cart' replace={true} />
          }
 
     return children;

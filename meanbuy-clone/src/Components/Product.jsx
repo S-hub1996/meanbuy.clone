@@ -9,9 +9,11 @@ import {
     Tooltip,
     Text,
   } from '@chakra-ui/react';
-  import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+  import { BsStarFill} from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-  
+import { useDispatch, useSelector } from "react-redux";
+import { addProductCart} from "../Redux/Products/actions";
+
   // const data = {
   //   isNew: true,
   //   image:
@@ -25,6 +27,14 @@ import {
 
   
   function Product({image,title,price,rating, para}) {
+    const dispatch = useDispatch();
+    const addToCartHandler = () => {
+      currentProduct && dispatch(addProductCart(currentProduct));
+    };
+  
+    const currentProduct = useSelector(
+      (store) => store.currentProduct
+    );
     return (
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
@@ -52,7 +62,7 @@ import {
             </Box>
             <Flex mt="1" justifyContent="space-between" alignContent="center">
               <Box
-                fontSize="2xl"
+                fontSize="xl"
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
@@ -65,18 +75,18 @@ import {
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                <chakra.a href={'#'} display={'flex'} onClick={addToCartHandler}>
+                  <Icon color={useColorModeValue('orange.400', 'orange.300')} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
                 </chakra.a>
               </Tooltip>
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
               <Rating rating={rating} />
-              <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
-                <Box as="span" color={'gray.600'} fontSize="lg">
+              <Box fontSize="2xl" color={useColorModeValue('orange.400', 'orange.300')}>
+                <Box as="span" color={useColorModeValue('orange.400', 'orange.300')} fontSize="lg">
                 ₹
-                </Box>
+                </Box >
                 {price.toFixed(2)}
               </Box>
             </Flex>
@@ -89,27 +99,8 @@ import {
   function Rating({rating}){
     return (
       <Flex d="flex"  alignItems="center">
-        <Text bg={'green.600'} border={'1px solid'} borderColor={'green.600'} p={'0 5px 0 5px '} color={'white'} borderRadius={4}>{rating}</Text>
-        {Array(5)
-          .fill('')
-          .map((_, i) => {
-            const roundedRating = Math.round(rating * 2) / 2;
-            
-            if (roundedRating - i >= 1) {
-              return (
-                <BsStarFill
-                  key={i}
-                  style={{ marginLeft: '1' }}
-                  color={i < rating ? 'teal.500' : 'gray.300'}
-                />
-              );
-            }
-            
-            if (roundedRating - i === 0.5) {
-              return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
-            }
-            return <BsStar key={i} style={{ marginLeft: '1' }} />;
-          })}
+        <Text bg={'green.600'} border={'1px solid'} borderColor={'green.600'} p={'0 5px 0 5px '} color={'white'} borderRadius={4} >{rating}</Text>
+        <BsStarFill color='green'/>
 
 
       </Flex>
