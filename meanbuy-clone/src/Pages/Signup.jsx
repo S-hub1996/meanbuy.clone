@@ -28,7 +28,7 @@ import {
     const navigate= useNavigate();
     const [firstName,setFirstName]= useState("");
     const [lastName,setLastName]= useState("");
-    const [email,setEmail]= useState("");
+    const [email,setEmail]= useState("eve.holt@reqres.in");
     const [password,setPassword]= useState("");
     const [showPassword, setShowPassword] = useState(false);
     const userStatus= useSelector(store=>store.authReducer.id)

@@ -15,7 +15,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { signIn } from "../Redux/Auth/Actions";
 import {useLocation ,useNavigate} from 'react-router-dom'
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("eve.holt@reqres.in");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const location= useLocation();
