@@ -1,3 +1,4 @@
+import React,{useState} from 'react';
 import {
     Flex,
     Box,
@@ -12,13 +13,16 @@ import {
     Heading,
     Text,
     useColorModeValue,
-    Link,
   } from '@chakra-ui/react';
-  import { useState } from 'react';
+
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import {Link as RouterLink} from 'react-router-dom'
   
   export default function Signup() {
+    const [firstName,setFiestName]= useState("");
+    const [lastName,setLastname]= useState("");
+    const [email,setEmail]= useState("");
+    const [password,setPassword]= useState("");
     const [showPassword, setShowPassword] = useState(false);
   
     return (
@@ -89,7 +93,7 @@ import {
               </Stack>
               <Stack pt={6}>
                 <Text align={'center'}>
-                  Already a user? <RouterLink to={'/login'} color={'blue.400'}>Login</RouterLink>
+                  Already a user? <RouterLink to={'/login'} color={'blue.300'}>Login</RouterLink>
                 </Text>
               </Stack>
             </Stack>

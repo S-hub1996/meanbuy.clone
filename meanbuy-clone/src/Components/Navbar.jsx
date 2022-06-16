@@ -26,7 +26,9 @@ import {
 } from "@chakra-ui/icons";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
-import {Link as RouterLink} from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import { signOut } from "../Redux/Auth/Actions";
 // const NavLink = ({ children }) => (
 //   <Link
 //     px={2}
@@ -43,8 +45,16 @@ import {Link as RouterLink} from 'react-router-dom';
 // );
 
 export default function Navbar() {
+  const authStatus = useSelector((store) => store.authReducer.auth);
+  const dispatch = useDispatch();
   const { colorMode, toggleColorMode } = useColorMode();
   // const { isOpen, onOpen, onClose } = useDisclosure();
+  const handleLogout=(e)=>{
+    e.preventDefault();
+    dispatch(signOut())
+   
+  }
+
   return (
     <>
       <Box
@@ -55,21 +65,21 @@ export default function Navbar() {
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Flex gap={2}>
-            <Box m={4} w={["100px", "200px", "300px"]} >
-              <RouterLink to={'/'}>
-              <Image
-                src={
-                  "https://meanbuyassets.s3.ap-south-1.amazonaws.com/baselogo.png"
-                }
+            <Box m={4} w={["100px", "200px", "300px"]}>
+              <RouterLink to={"/"}>
+                <Image
+                  src={
+                    "https://meanbuyassets.s3.ap-south-1.amazonaws.com/baselogo.png"
+                  }
                 />
-                </RouterLink>
+              </RouterLink>
             </Box>
 
             <InputGroup display={["none", "block"]} m={6}>
-              <Input placeholder="Search" borderRadius={0} h={8}/>
+              <Input placeholder="Search" borderRadius={0} h={8} />
               <InputRightElement
                 pointerEvents="none"
-                children={<AiOutlineSearch color="gray.300" fontSize={20}/>}
+                children={<AiOutlineSearch color="gray.300" fontSize={20} />}
               />
             </InputGroup>
           </Flex>
@@ -93,21 +103,18 @@ export default function Navbar() {
                   color="orange"
                 />
                 <MenuList padding={8} border="1px solid orange">
-                  <RouterLink to={'/orders'}>
-                  <MenuItem bg={"orange"} m={2}>
-                    My Orders
-                  </MenuItem>
-                    </RouterLink>  
-                  <RouterLink to={'/login'}>
-                  <MenuItem bg={"orange"} m={2}>
-                  LogIn
-                  </MenuItem>
+               
+                  <RouterLink to={"/orders"}>
+                    <MenuItem bg={"orange"} m={2}>
+                      My Orders
+                    </MenuItem>
                   </RouterLink>
-                  <RouterLink to={'/signup'}>
-                  <MenuItem bg={"orange"} m={2}>
-                     Register
-                  </MenuItem>
-                     </RouterLink>
+                  {ToggleLogin(authStatus,handleLogout)}
+                  <RouterLink to={"/signup"}>
+                    <MenuItem bg={"orange"} m={2}>
+                      Register
+                    </MenuItem>
+                  </RouterLink>
                 </MenuList>
               </Menu>
             </Stack>
@@ -139,11 +146,10 @@ export default function Navbar() {
               Categories
               <ChevronDownIcon />
             </MenuButton>
-            <MENU_LIST/>
+            <MENU_LIST />
           </Menu>
-          <RouterLink to={'/products'}>
-
-          <Link> Flash Sale</Link>
+          <RouterLink to={"/products"}>
+            <Link> Flash Sale</Link>
           </RouterLink>
           <Link display={["none", "none", "block"]}> Best Deals</Link>
           <Link display={["none", "none", "block"]}> Shop by Brand</Link>
@@ -158,92 +164,118 @@ export default function Navbar() {
 const MENU_LIST = () => {
   return (
     <>
-      
-        <MenuList>
-          <Flex fontSize={'sm'} display={['block','block','flex']}>
+      <MenuList>
+        <Flex fontSize={"sm"} display={["block", "block", "flex"]}>
+          <Box>
+            <Heading as={"h4"} size={"sm"}>
+              MEN
+            </Heading>
+            <MenuItem>Watches</MenuItem>
+            <MenuItem>Men's Watches</MenuItem>
 
-            <Box >
-          <Heading as={"h4"} size={"sm"}>
-            MEN
-          </Heading>
-          <MenuItem>Watches</MenuItem>
-          <MenuItem>Men's Watches</MenuItem>
-          
-          <Heading as={"h4"} size={"sm"}>
-            WOMEN
-          </Heading>
-          <MenuItem>Makeup Accessories</MenuItem>
-          <MenuItem>Fashion</MenuItem>
-          <MenuItem>Jewellery</MenuItem>
-          <MenuItem>Watches</MenuItem>
-          </Box>
-            <Box>
-          <Heading as={"h4"} size={"sm"}>
-            ELECTRONICS
-          </Heading>
-          <MenuItem>Gaming Accessories</MenuItem>
-          <MenuItem>Keyboards & Mouse</MenuItem>
-          <MenuItem>Laptops</MenuItem>
-          <MenuItem>Small Appliances</MenuItem>
-          
-          <Heading as={"h4"} size={"sm"}>
-            KIDS & MOMS
-          </Heading>
-          <MenuItem>DIY Toys</MenuItem>
-          <MenuItem>Kid's Shoes</MenuItem>
-          <MenuItem>Water Bottle</MenuItem>
-          <MenuItem>Sports Bluetooth</MenuItem>
-          <MenuItem>Gift</MenuItem>
-          </Box>
-            <Box>
-          <Heading as={"h4"} size={"sm"}>
-            MOBILE & TABS
-          </Heading>
-          <MenuItem>Apple Accessories</MenuItem>
-          <MenuItem>Blutooth Earphone</MenuItem>
-          <MenuItem>Mobile Accessories</MenuItem>
-          <MenuItem>Power Banks</MenuItem>
-          <MenuItem>Sporting Bluetooth</MenuItem>
-          <MenuItem>Wired Headphones</MenuItem>
-          <MenuItem>Wireless Chargers</MenuItem>
-          <MenuItem>Wireless Speakers</MenuItem>
+            <Heading as={"h4"} size={"sm"}>
+              WOMEN
+            </Heading>
+            <MenuItem>Makeup Accessories</MenuItem>
+            <MenuItem>Fashion</MenuItem>
+            <MenuItem>Jewellery</MenuItem>
+            <MenuItem>Watches</MenuItem>
           </Box>
           <Box>
-          <Heading as={"h4"} size={"sm"}>
-            HOME & LIVING
-          </Heading>
-          <MenuItem>Bath & Storage</MenuItem>
-          <MenuItem>Fitness Merchandise</MenuItem>
-          <MenuItem>Gardening</MenuItem>
-          <MenuItem>Home Decor</MenuItem>
-          <MenuItem>Home Improvement</MenuItem>
-          <MenuItem>Kitchen Wares</MenuItem>
-          <MenuItem>Nordic Ceilingh Lights</MenuItem>
-          <MenuItem>Pet Products</MenuItem>
-          <MenuItem>USB Fans</MenuItem>
-          <MenuItem>Wall Decor</MenuItem>
-          <MenuItem>Water Bottles</MenuItem>
-          </Box>
-            <Box>
-          <Heading as={"h4"} size={"sm"}>
-            FLASH SALE
-          </Heading>
-          <MenuItem>Flash Sale</MenuItem>
-         
-          
-          <Heading as={"h4"} size={"sm"}>
-            MEANBUY DEALS
-          </Heading>
-          <MenuItem>Electronics</MenuItem>
-          <MenuItem>Men's Watches</MenuItem>
-          <MenuItem>Ramadan Gifts</MenuItem>
-          <MenuItem>Smart Watches</MenuItem>
-          <MenuItem>Top Selling Ear Buds</MenuItem>
-          </Box>
+            <Heading as={"h4"} size={"sm"}>
+              ELECTRONICS
+            </Heading>
+            <MenuItem>Gaming Accessories</MenuItem>
+            <MenuItem>Keyboards & Mouse</MenuItem>
+            <MenuItem>Laptops</MenuItem>
+            <MenuItem>Small Appliances</MenuItem>
 
+            <Heading as={"h4"} size={"sm"}>
+              KIDS & MOMS
+            </Heading>
+            <MenuItem>DIY Toys</MenuItem>
+            <MenuItem>Kid's Shoes</MenuItem>
+            <MenuItem>Water Bottle</MenuItem>
+            <MenuItem>Sports Bluetooth</MenuItem>
+            <MenuItem>Gift</MenuItem>
+          </Box>
+          <Box>
+            <Heading as={"h4"} size={"sm"}>
+              MOBILE & TABS
+            </Heading>
+            <MenuItem>Apple Accessories</MenuItem>
+            <MenuItem>Blutooth Earphone</MenuItem>
+            <MenuItem>Mobile Accessories</MenuItem>
+            <MenuItem>Power Banks</MenuItem>
+            <MenuItem>Sporting Bluetooth</MenuItem>
+            <MenuItem>Wired Headphones</MenuItem>
+            <MenuItem>Wireless Chargers</MenuItem>
+            <MenuItem>Wireless Speakers</MenuItem>
+          </Box>
+          <Box>
+            <Heading as={"h4"} size={"sm"}>
+              HOME & LIVING
+            </Heading>
+            <MenuItem>Bath & Storage</MenuItem>
+            <MenuItem>Fitness Merchandise</MenuItem>
+            <MenuItem>Gardening</MenuItem>
+            <MenuItem>Home Decor</MenuItem>
+            <MenuItem>Home Improvement</MenuItem>
+            <MenuItem>Kitchen Wares</MenuItem>
+            <MenuItem>Nordic Ceilingh Lights</MenuItem>
+            <MenuItem>Pet Products</MenuItem>
+            <MenuItem>USB Fans</MenuItem>
+            <MenuItem>Wall Decor</MenuItem>
+            <MenuItem>Water Bottles</MenuItem>
+          </Box>
+          <Box>
+            <Heading as={"h4"} size={"sm"}>
+              FLASH SALE
+            </Heading>
+            <MenuItem>Flash Sale</MenuItem>
 
-      </Flex>
-        </MenuList>
+            <Heading as={"h4"} size={"sm"}>
+              MEANBUY DEALS
+            </Heading>
+            <MenuItem>Electronics</MenuItem>
+            <MenuItem>Men's Watches</MenuItem>
+            <MenuItem>Ramadan Gifts</MenuItem>
+            <MenuItem>Smart Watches</MenuItem>
+            <MenuItem>Top Selling Ear Buds</MenuItem>
+          </Box>
+        </Flex>
+      </MenuList>
     </>
   );
 };
+
+function ToggleLogin(authStatus,handleLogout) {
+
+  if (!authStatus) {
+    return (
+      <RouterLink to={"/login"} >
+        <MenuItem bg={"orange"} m={2}>
+          LogIn
+        </MenuItem>
+      </RouterLink>
+    );
+  }
+  else{
+    return (<>
+      <RouterLink to={"/profile"} >
+        <MenuItem bg={"orange"} m={2} >
+       Profile          
+        </MenuItem>
+      </RouterLink>
+      <RouterLink to={"/"} >
+        <MenuItem bg={"orange"} m={2} >
+          <Button variant={'unstyled'} bg={'none'} fontWeight={'normal'} onClick={handleLogout}>
+          LogOut
+          </Button>  
+        </MenuItem>
+      </RouterLink>   
+    </>
+    )
+  }
+}
+
