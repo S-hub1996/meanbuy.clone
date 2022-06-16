@@ -1,10 +1,13 @@
+import { nanoid } from '@reduxjs/toolkit';
 import { SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS } from './Actions';
 import { SIGNOUT_FAILURE, SIGNOUT_REQUEST, SIGNOUT_SUCCESS } from './Actions';
+import { REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from './Actions';
 
 const initialState = {
     auth: false,
     token: '',
-    error:false
+    error:false,
+    id:''
 }
 
 
@@ -50,8 +53,28 @@ const authReducer = (state = initialState, action) => {
                 auth: true,
                 token: '',
                 error:payload
+            }
+        case REGISTER_REQUEST:
+            return {
+                auth: true,
+                token: '',
+                error:false,
+                id:''
+            }
+        case REGISTER_SUCCESS:
+            return {
+                auth: false,
+                token: payload,
+                error:false,
+                id:payload
 
-
+            }
+        case REGISTER_FAILURE:
+            return {
+                auth: true,
+                token: '',
+                error:payload,
+                id:''
             }
         default:
             return state;

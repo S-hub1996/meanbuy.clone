@@ -7,6 +7,10 @@ export const SIGNOUT_REQUEST = 'SIGNOUT_REQUEST';
 export const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS';
 export const SIGNOUT_FAILURE = 'SIGNOUT_FAILURE';
 
+export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAILURE = 'REGISTER_FAILURE';
+
 const signInRequest = () => {
     return {
         type: SIGNIN_REQUEST,
@@ -45,6 +49,25 @@ const signOutFailure = (payload) => {
         payload
     }
 }
+const registerRequest = () => {
+    return {
+        type: REGISTER_REQUEST,
+    }
+}
+
+const registerSuccess = (payload) => {
+    return {
+        type: REGISTER_SUCCESS,
+        payload
+    }
+}
+
+const registerFailure = (payload) => {
+    return {
+        type: REGISTER_FAILURE,
+        payload
+    }
+}
 
 const signIn = (payload) => (dispatch) => {
     dispatch(signInRequest());
@@ -54,6 +77,10 @@ const signOut = (payload) => (dispatch) => {
     dispatch(signOutRequest());
     Axios.get('/').then((r) => dispatch(signOutSuccess(r.data))).catch((e)=>dispatch(signOutFailure(e.data)));
 }
+const registerUser = (payload) => (dispatch) => {
+    dispatch(registerRequest());
+    Axios.post('/api/register',  payload , { baseURL: 'https://reqres.in' }).then((r) => dispatch(registerSuccess(r.data))).catch((e)=>dispatch(registerFailure(e.data)));
+}
 
 
-export { signIn,signOut };
+export { signIn,signOut,registerUser };

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {
     Flex,
     Box,
@@ -16,18 +16,36 @@ import {
   } from '@chakra-ui/react';
 
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-  import {Link as RouterLink} from 'react-router-dom'
-  
+  import {Link as RouterLink, Navigate} from 'react-router-dom'
+  import { registerUser } from '../Redux/Auth/Actions';
+  import { useSelector,useDispatch } from 'react-redux';
+  import { useLocation,useNavigate } from 'react-router-dom';
   export default function Signup() {
-    const [firstName,setFiestName]= useState("");
-    const [lastName,setLastname]= useState("");
+    
+    const dispatch= useDispatch();
+    const location= useLocation();
+    console.log(location);
+    const navigate= useNavigate();
+    const [firstName,setFirstName]= useState("");
+    const [lastName,setLastName]= useState("");
     const [email,setEmail]= useState("");
     const [password,setPassword]= useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const userStatus= useSelector(store=>store.authReducer.id)
+    useEffect(()=>{
+      if(userStatus){
+        Navigate("/login",{replace:true});
+      }
+    },[navigate,userStatus])
   
+    const submitHandler = (e) => {
+      e.preventDefault();
+      dispatch(registerUser({firstName:firstName,lastName:lastName,email:email,password:password}))
+      console.log("register",email, password);
+    };
     return (
       <Flex
-        minH={'100vh'}
+        // minH={'100vh'}
         // align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}>
@@ -46,28 +64,29 @@ import {
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>
+              <form onSubmit={submitHandler}>
               <HStack>
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" value={firstName} onChange={(e)=>setFirstName(e.target.value)} />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl id="lastName">
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text"  value={lastName} onChange={(e)=>setLastName(e.target.value)}/>
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
+                  <Input value={password} onChange={(e)=>setPassword(e.target.value)} type={showPassword ? 'text' : 'password'} />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -87,10 +106,12 @@ import {
                   color={'white'}
                   _hover={{
                     bg: 'orange.500',
-                  }}>
+                  }}
+                  type="submit">
                   Sign up
                 </Button>
               </Stack>
+              </form>
               <Stack pt={6}>
                 <Text align={'center'}>
                   Already a user? <RouterLink to={'/login'} color={'blue.300'}>Login</RouterLink>
