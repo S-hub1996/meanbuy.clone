@@ -5,6 +5,7 @@ import { fetchCart } from "../Redux/Products/actions";
 import prdcts from "../db.json"
 const CartCounter = () => {
   const [cart,setCart] = useState(JSON.parse(localStorage.getItem('product')) || [])
+  
   return (
     <>
     

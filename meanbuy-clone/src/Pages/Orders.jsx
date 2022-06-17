@@ -12,7 +12,7 @@ const Orders = () => {
   const toast = useToast()
 
   return (
-   <Box>
+   <Box mb={12}>
         <Heading as="h2" size='xl' textAlign='center'>
             Your Orders
         </Heading>
