@@ -27,8 +27,9 @@ import {
 import { HiShoppingCart } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link as RouterLink } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../Redux/Auth/Actions";
+import CartCounter from "./CartCounter";
 // const NavLink = ({ children }) => (
 //   <Link
 //     px={2}
@@ -49,11 +50,10 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const { colorMode, toggleColorMode } = useColorMode();
   // const { isOpen, onOpen, onClose } = useDisclosure();
-  const handleLogout=(e)=>{
+  const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(signOut())
-   
-  }
+    dispatch(signOut());
+  };
 
   return (
     <>
@@ -89,12 +89,20 @@ export default function Navbar() {
               <Button onClick={toggleColorMode} bg="none">
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
-                  <RouterLink to={'/cart'}>
-              <Button bg={"none"}>
-                <HiShoppingCart size={30} color="orange" />
-              </Button>
-                  </RouterLink>
 
+              <Flex
+                display={{ base: "none", md: "flex" }}
+                m={3}
+                position="relative"
+                p="0 0.5rem 0 0"
+              >
+                <RouterLink to="/cart">
+                  <CartCounter />
+                  <Button fontSize={30} bg={"none"} p={0} m={0}>
+                    <HiShoppingCart color="orange" />
+                  </Button>
+                </RouterLink>
+              </Flex>
               <Menu>
                 <MenuButton
                   as={IconButton}
@@ -104,13 +112,12 @@ export default function Navbar() {
                   color="orange"
                 />
                 <MenuList padding={8} border="1px solid orange">
-               
                   <RouterLink to={"/orders"}>
                     <MenuItem bg={"orange"} m={2}>
                       My Orders
                     </MenuItem>
                   </RouterLink>
-                  {ToggleLogin(authStatus,handleLogout)}
+                  {ToggleLogin(authStatus, handleLogout)}
                   <RouterLink to={"/signup"}>
                     <MenuItem bg={"orange"} m={2}>
                       Register
@@ -153,14 +160,14 @@ export default function Navbar() {
             <Link> Flash Sale</Link>
           </RouterLink>
           <RouterLink to={"/products"}>
-          <Link display={["none", "none", "block"]}> Best Deals</Link>
+            <Link display={["none", "none", "block"]}> Best Deals</Link>
           </RouterLink>
           <Link display={["none", "none", "block"]}> Shop by Brand</Link>
-         
+
           <Link display={["none", "none", "block"]}> Trending</Link>
-         <RouterLink to={'/products'}>
-          <Link> New Arrivals</Link>
-         </RouterLink>
+          <RouterLink to={"/products"}>
+            <Link> New Arrivals</Link>
+          </RouterLink>
         </Flex>
       </Box>
     </>
@@ -176,11 +183,11 @@ const MENU_LIST = () => {
             <Heading as={"h4"} size={"sm"}>
               MEN
             </Heading>
-            <RouterLink to={'/watches'}>
-            <MenuItem>Watches</MenuItem>
+            <RouterLink to={"/watches"}>
+              <MenuItem>Watches</MenuItem>
             </RouterLink>
-            <RouterLink to={'/watches'}>
-            <MenuItem>Men's Watches</MenuItem>
+            <RouterLink to={"/watches"}>
+              <MenuItem>Men's Watches</MenuItem>
             </RouterLink>
             <Heading as={"h4"} size={"sm"}>
               WOMEN
@@ -247,8 +254,8 @@ const MENU_LIST = () => {
               MEANBUY DEALS
             </Heading>
             <MenuItem>Electronics</MenuItem>
-            <RouterLink to={'/watches'}>
-            <MenuItem>Men's Watches</MenuItem>
+            <RouterLink to={"/watches"}>
+              <MenuItem>Men's Watches</MenuItem>
             </RouterLink>
             <MenuItem>Ramadan Gifts</MenuItem>
             <MenuItem>Smart Watches</MenuItem>
@@ -260,33 +267,36 @@ const MENU_LIST = () => {
   );
 };
 
-function ToggleLogin(authStatus,handleLogout) {
-
+function ToggleLogin(authStatus, handleLogout) {
   if (!authStatus) {
     return (
-      <RouterLink to={"/login"} >
+      <RouterLink to={"/login"}>
         <MenuItem bg={"orange"} m={2}>
           LogIn
         </MenuItem>
       </RouterLink>
     );
-  }
-  else{
-    return (<>
-      <RouterLink to={"/profile"} >
-        <MenuItem bg={"orange"} m={2} >
-       Profile          
-        </MenuItem>
-      </RouterLink>
-      <RouterLink to={"/"} >
-        <MenuItem bg={"orange"} m={2} >
-          <Button variant={'unstyled'} bg={'none'} fontWeight={'normal'} onClick={handleLogout}>
-          LogOut
-          </Button>  
-        </MenuItem>
-      </RouterLink>   
-    </>
-    )
+  } else {
+    return (
+      <>
+        <RouterLink to={"/profile"}>
+          <MenuItem bg={"orange"} m={2}>
+            Profile
+          </MenuItem>
+        </RouterLink>
+        <RouterLink to={"/"}>
+          <MenuItem bg={"orange"} m={2}>
+            <Button
+              variant={"unstyled"}
+              bg={"none"}
+              fontWeight={"normal"}
+              onClick={handleLogout}
+            >
+              LogOut
+            </Button>
+          </MenuItem>
+        </RouterLink>
+      </>
+    );
   }
 }
-

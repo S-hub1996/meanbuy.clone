@@ -11,30 +11,35 @@ import {
   } from '@chakra-ui/react';
   import { BsStarFill} from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProductCart} from "../Redux/Products/actions";
-
-  // const data = {
-  //   isNew: true,
-  //   image:
-  //     'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-  //   title: 'Wayfarer Classic',
-  //   price: 4.5,
-  //   rating: 4.2,
-  //   numReviews: 34,
-  // };
-
+import prdcts from "../db.json" 
 
   
-  function Product({image,title,price,rating, para}) {
-    const dispatch = useDispatch();
-    const addToCartHandler = () => {
-      currentProduct && dispatch(addProductCart(currentProduct));
+  function Product(product) {
+
+    let cartArr= JSON.parse(localStorage.getItem('product')) || [];
+    console.log(product)
+
+    const {image,title,price,rating, para,id}=product;
+
+    
+    const addToCartHandler =  ( ) => {
+      console.log("click",cartArr);
+      const NewProduct= {...product,qty:1}
+      console.log(NewProduct)
+      
+      let data =cartArr
+      data.push(NewProduct)
+      console.log(data)
+    data =JSON.stringify(data);
+      localStorage.setItem("product",data)
+
     };
-  
-    const currentProduct = useSelector(
-      (store) => store.currentProduct
-    );
+
+
+
+
     return (
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
@@ -75,8 +80,8 @@ import { addProductCart} from "../Redux/Products/actions";
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'} onClick={addToCartHandler}>
-                  <Icon color={useColorModeValue('orange.400', 'orange.300')} as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                <chakra.a style={{cursor:"pointer"}}  display={'flex'} >
+                  <Icon color={useColorModeValue('orange.400', 'orange.300')} as={FiShoppingCart} h={7} w={7} alignSelf={'center'}  onClick={addToCartHandler}/>
                 </chakra.a>
               </Tooltip>
             </Flex>

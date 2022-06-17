@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -10,17 +10,33 @@ import {
 } from "@chakra-ui/react";
 import Checkout from "../Components/Checkout";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { addOrder, deleteProductCart } from "../Redux/Products/actions";
+import { useNavigate } from "react-router-dom";
+import prdcts from "../db.json" 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const cart = useSelector((store) => store.cart);
+const [cart,setCart] = useState(JSON.parse(localStorage.getItem('product')) || [])
+let navigate = useNavigate();
+
   const removeProduct = (id) => {
-    dispatch(deleteProductCart(id));
+    console.log(id)
+    let Fcart=cart.filter((e)=>{
+      if(e.id !== id){
+        return e;
+      }
+      console.log(id,e.id)
+    })
+    setCart(Fcart)
+    Fcart =JSON.stringify(Fcart);
+    console.log(Fcart)
+  localStorage.setItem('product',Fcart)
   };
 
+
   const checkoutHandler = () => {
-    dispatch(addOrder(cart));
+    let myorders = cart;
+    localStorage.setItem('orders',JSON.stringify(myorders));
+    localStorage.setItem('product',JSON.stringify([]))
+    setCart([])
+    navigate("/orders", { replace: true });
   };
   return (
     <>
@@ -33,7 +49,7 @@ const Cart = () => {
       >
         CART
       </Heading>
-      {/* {cart.length &&
+      {cart.length &&
         cart.map((product) => {
           return (
             <CartItem
@@ -46,9 +62,9 @@ const Cart = () => {
               removeProduct={removeProduct}
             />
           );
-        })} */}
+        })}
 
-      {/* <Checkout cart={cart} checkoutHandler={checkoutHandler} /> */}
+      <Checkout cart={cart} checkoutHandler={checkoutHandler} />
     </>
   );
 };
@@ -117,6 +133,9 @@ function CartItem({ title, image, price, description, id, removeProduct }) {
               </Text>
               {price}
             </Text>
+
+            
+
             <Button
               variant={"outline"}
               onClick={() => removeProduct(id)}

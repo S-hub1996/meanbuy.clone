@@ -74,6 +74,7 @@ const Watches = () => {
               <GridItem>
                 <Product
                   key={product.id}
+                  id={product.id}
                   image={product.image}
                   title={product.name}
                   price={product.price}
