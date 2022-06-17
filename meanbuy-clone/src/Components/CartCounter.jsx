@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart } from "../Redux/Products/actions";
 import prdcts from "../db.json"
 const CartCounter = () => {
-  const cart = prdcts.cart;
-
-
+  const [cart,setCart] = useState(JSON.parse(localStorage.getItem('product')) || [])
   return (
     <>
     
