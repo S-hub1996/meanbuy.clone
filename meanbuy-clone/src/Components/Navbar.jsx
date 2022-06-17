@@ -91,7 +91,7 @@ export default function Navbar() {
               </Button>
 
               <Flex
-                display={{ base: "none", md: "flex" }}
+                display={{md: "flex" }}
                 m={3}
                 position="relative"
                 p="0 0.5rem 0 0"
