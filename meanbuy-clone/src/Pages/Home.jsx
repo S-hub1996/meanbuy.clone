@@ -8,12 +8,7 @@ const Home = () => {
   const fastMoving = Products.fastMovingProduct;
   return (
     <>
-      <Center gap={2}>
 
-        <Text>cart</Text>
-        <Text>Orders</Text>
-        <Text>checkout</Text>
-      </Center>
       <Carousel />
       <hr/>
 <Heading p={4}> Fast Moving Products</Heading>
