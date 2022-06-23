@@ -7,7 +7,9 @@ https://meanbuy-clone.vercel.app/
 <h4>Stacks I used:- React,Redux,ChakraUI, Redux-Thunk, React-router-dom.</h4>
 
 <h3>Here are some snapshots of website :)</h3>
-<a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*-lZ5bgaCTzlauG4k5DljBQ.jpeg" alt="website images" height="400" width="1200" /></a>
+
+![image](https://user-images.githubusercontent.com/94439105/175332321-597ae1a5-47cb-43a2-a88a-2c980a61b08f.png)
+
 <h5 align="center">Landing Page</h5>
 
 <a href="https://linkedin.com/in/anandrajsingh5" target="_blank"><img align="center" src="https://miro.medium.com/max/700/1*mMUHQYsVkQ_APZhS6Fz1mA.jpeg" alt="website images" height="400" width="1200" /></a>
